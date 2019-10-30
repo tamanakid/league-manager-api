@@ -7,9 +7,10 @@ exports.checkUsernameAndEmail = (req) => {
 				{ username: req.body.username },
 				{ email: req.body.email },
 			]
-		}).then((user) => {
-			resolve(!!user);
 		})
+		.then((user) => {
+			resolve(!!user);
+		});
 	});
 };
 
@@ -19,8 +20,8 @@ exports.checkUsername = (req) => {
 		return User.findOne({
 			username: req.body.username
 		})
-			.then((user) => {
-				resolve(!!user);
-			});
+		.then((user) => {
+			resolve(!!user);
+		});
 	});
 };
