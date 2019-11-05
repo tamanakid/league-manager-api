@@ -1,4 +1,4 @@
-#### Pending sh script: Adding SSH identity when opening bash:
+#### Pending sh script: Adding SSH identity when opening bash
 
 ```sh
 eval $(ssh-agent -s)
