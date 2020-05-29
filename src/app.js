@@ -25,14 +25,20 @@ app.use((req, res, next) => {
 });
 
 
+/* Module Aliases Creation */
+glob.sync(path.join(__dirname, '/modules/**/*+(Controller).js')).forEach((filename) => {
+
+	let name = filename.split('Controller')[0].split('/').pop();
+	moduleAlias.addAlias(`@${name}`, `${__dirname}/modules/${name}`);
+});
+
+
+
 /* Controllers instantiation */
 const controllers = glob.sync(path.join(__dirname, '/modules/**/*+(Controller).js')).map((filename) => {
 
 	let name = filename.split('Controller')[0].split('/').pop();
-	moduleAlias.addAlias(`@${name}`, `${__dirname}/modules/${name}`);
-	
 	let router = require(path.resolve(filename));
-
 	return { name, router };
 });
 
