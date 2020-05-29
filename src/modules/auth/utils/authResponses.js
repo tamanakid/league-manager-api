@@ -1,7 +1,7 @@
 const resNames = {
 	AUTH_USER_EXISTS: "AUTH_USER_EXISTS",
 	AUTH_USER_DOESNT_EXIST: "AUTH_USER_DOESNT_EXIST",
-	AUTH_USER_NOT_LOGGED: "AUTH_USER_NOT_LOGGED",
+	AUTH_INVALID_TOKEN: "AUTH_INVALID_TOKEN",
 	AUTH_REGISTER_ERROR: "AUTH_REGISTER_ERROR",
 	AUTH_INCORRECT_PASSWORD: "AUTH_INCORRECT_PASSWORD",
 };
@@ -22,9 +22,9 @@ const responses = {
 		});
 	},
 
-	[resNames.AUTH_USER_NOT_LOGGED]: (res) => {
+	[resNames.AUTH_INVALID_TOKEN]: (res) => {
 		res.status(401).json({
-			message: 'The user is not logged or the authorization headers are incorrect',
+			message: 'The user is not logged or the authorization token is incorrect',
 		})
 	},
 	

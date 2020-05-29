@@ -17,7 +17,7 @@ glob.sync(path.resolve("src/modules/**/utils/*+(Responses).js")).forEach((filena
 	responses =  { ...responses, ...moduleResponses };
 });
 
-console.log(responses);
+// console.log(responses);
 
 
 

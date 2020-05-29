@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const User = require('@auth/models/UserModel');
-const { GLOBAL_SERVER_ERROR, GLOBAL_DB_ERROR } = require('@/utils/globalResponses').resNames;
-const { AUTH_USER_DOESNT_EXIST, AUTH_USER_NOT_LOGGED } = require('@auth/utils/authResponses').resNames;
+const { GLOBAL_DB_ERROR } = require('@/utils/globalResponses').resNames;
+const { AUTH_USER_DOESNT_EXIST, AUTH_INVALID_TOKEN } = require('@auth/utils/authResponses').resNames;
 
 
 
@@ -17,11 +17,11 @@ exports.verifyUserLoggedService = (req, res, next) => {
 	try {
 		decodedKey = jwt.verify(authHeader, process.env.JWT_KEY);
 	} catch (error) {
-		next(GLOBAL_SERVER_ERROR);
+		next(AUTH_INVALID_TOKEN);
 	}
 	
 	if (!decodedKey) {
-		next(AUTH_USER_NOT_LOGGED);
+		next(AUTH_INVALID_TOKEN);
 	} else {
 
 		const userId = decodedKey.userId;
