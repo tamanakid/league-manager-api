@@ -27,17 +27,21 @@ exports.checkUsernameAndEmail = (req, res, next) => {
 
 
 
-exports.checkUsername = (req, res, next) => {
+exports.checkUsernameOrEmail = (req, res, next) => {
 	
 	User.findOne({
-		username: req.body.username
+		$or: [
+			{ username: req.body.usernameOrEmail },
+			{ email: req.body.usernameOrEmail },
+		]
 	})
 
 	.then((user) => {
-		if (!user) {
+		if (user) {
+			res.locals.user = user;
 			next();
 		} else {
-			responses.userAlreadyExists(res);
+			responses.userDoesntExist(res);
 		}
 	})
 

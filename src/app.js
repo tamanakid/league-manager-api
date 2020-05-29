@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const moduleAlias = require('module-alias');
 
+const responses = require('@/utils/responses');
+
 
 
 app = express();
@@ -14,6 +16,13 @@ app.use(bodyParser.json());
 
 
 
+
+/* CORS Habilitation */
+app.use((req, res, next) => {
+	res.setHeader('Access-Control-Allow-Methods', 'GET, PUT', 'POST', 'DELETE', 'PATCH');
+	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	next();
+});
 
 
 /* Controllers instantiation */
@@ -34,9 +43,16 @@ controllers.forEach(({ name, router }) => {
 
 
 
+/* Error Handling */
+app.use((req, res, next, error) => {
+	responses.serverError(res);
+});
 
-/* Database Connection */
-mongoose.connect('mongodb://127.0.0.1:27017/league-manager', { useNewUrlParser: true, useUnifiedTopology: true }).then((res) => {
+
+
+
+/* Database Connection and server socket instantiation */
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then((res) => {
 	console.log('connected to database '/* , res */);
 	
 	/* Server Instantiation */

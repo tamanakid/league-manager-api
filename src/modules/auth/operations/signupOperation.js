@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 
 const responses = require('@auth/utils/responses');
 const User = require('@auth/models/UserModel');
-const checkUserExistsService = require('@auth/services/checkUserExistsService');
 
 
 
@@ -19,7 +18,7 @@ const signupOperation = (req, res, next) => {
 	})
 
 	.then((user) => {
-		res.status(200).send({
+		res.status(201).json({
 			userId: user.id,
 			username: user.username,
 		});
