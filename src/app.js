@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const moduleAlias = require('module-alias');
 
-const responses = require('@/utils/responses');
+const errorHandler = require('@/utils/errorHandler');
 
 
 
@@ -44,9 +44,7 @@ controllers.forEach(({ name, router }) => {
 
 
 /* Error Handling */
-app.use((req, res, next, error) => {
-	responses.serverError(res);
-});
+app.use(errorHandler);
 
 
 

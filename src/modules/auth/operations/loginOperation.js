@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const responses = require('@auth/utils/responses');
+const { AUTH_INCORRECT_PASSWORD } = require('@/utils/globalResponses').resNames;
 
 
 const loginOperation = (req, res, next) => {
@@ -15,7 +15,7 @@ const loginOperation = (req, res, next) => {
 		const token = jwt.sign({ userId: user.id, username: user.username }, process.env.JWT_KEY, { expiresIn: '1h' });
 		res.status(200).json({ token: token, userId: user._id.toString() });
 	} else {
-		responses.incorrectPassword(res);
+		next(AUTH_INCORRECT_PASSWORD);
 	}
 }
 

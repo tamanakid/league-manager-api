@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
-const responses = require('@auth/utils/responses');
 const User = require('@auth/models/UserModel');
+const { GLOBAL_DB_ERROR } = require('@/utils/globalResponses').resNames;
 
 
 
@@ -25,7 +25,7 @@ const signupOperation = (req, res, next) => {
 	})
 
 	.catch(() => {
-		responses.generic.dbError(res);
+		next(GLOBAL_DB_ERROR);
 	});
 
 };

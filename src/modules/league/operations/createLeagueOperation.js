@@ -1,5 +1,5 @@
-const responses = require('@league/utils/responses');
 const League = require('@league/models/LeagueModel');
+const { GLOBAL_DB_ERROR } = require('@/utils/globalResponses').resNames;
 
 
 
@@ -22,7 +22,7 @@ const createLeagueOperation = (req, res, next) => {
 	})
 	
 	.catch(() => {
-		responses.generic.dbError(res);
+		next(GLOBAL_DB_ERROR);
 	})
 
 }

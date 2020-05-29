@@ -1,5 +1,6 @@
 const User = require('@auth/models/UserModel');
-const responses = require('@auth/utils/responses');
+const { GLOBAL_DB_ERROR } = require('@/utils/globalResponses').resNames;
+const { AUTH_USER_EXISTS } = require('@auth/utils/authResponses').resNames;
 
 
 
@@ -16,12 +17,12 @@ exports.checkUsernameAndEmail = (req, res, next) => {
 		if (!user) {
 			next();
 		} else {
-			responses.userAlreadyExists(res);
+			next(AUTH_USER_EXISTS);
 		}
 	})
 	
 	.catch(() => {
-		responses.generic.dbError(res);
+		next(GLOBAL_DB_ERROR);
 	});
 };
 
