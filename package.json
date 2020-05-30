@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/app.js",
     "dev-start": "nodemon -r dotenv/config src/app.js",
-    "debug": "nodemon --inspect src/app.js"
+    "debug": "nodemon --inspect src/app.js",
+    "cli-create-module": "node scripts/scriptCreateModule.js"
   },
   "author": "",
   "license": "ISC",
