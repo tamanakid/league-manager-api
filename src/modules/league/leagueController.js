@@ -10,8 +10,18 @@ const addTeamToLeagueOperation = require('@league/operations/addTeamToLeagueOper
 let router = express.Router();
 
 
+/**
+ * headers: Authorization (token)
+ * request body: name, location, numberOfTeams
+ * response body: leagueId, leagueName
+ */
 router.post('/create', verifyUserLoggedService, createLeagueOperation);
 
+/**
+ * headers: Authorization (token)
+ * request body: teamId
+ * response body: teamId, leagueId
+ */
 router.post('/:leagueId/add-team', verifyUserLoggedService, verifyUserIsLeagueAdminService, addTeamToLeagueOperation);
 
 

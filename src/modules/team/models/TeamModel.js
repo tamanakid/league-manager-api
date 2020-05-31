@@ -12,7 +12,12 @@ const teamSchema = new mongoose.Schema({
 
 	admin: {
     type: Schema.Types.ObjectId,
-    ref: 'user',
+		ref: 'user',
+		required: true,
+	},
+
+	location: {
+		type: String,
 	},
 
 	leagues: [
@@ -20,8 +25,22 @@ const teamSchema = new mongoose.Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'league'
 		}
-	]
+	],
+
+	color1: {
+		type: String,
+	},
 	
+	color2: {
+		type: String,
+	},
+
+	players: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'player'
+		}
+	]
 	
 });
 

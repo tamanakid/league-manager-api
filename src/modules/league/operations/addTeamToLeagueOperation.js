@@ -35,8 +35,8 @@ const addTeamToLeagueOperation = (req, res, next) => {
 					})
 
 					.catch(() => {
-						league.teams.push(team.id);
-						league.save().then((league) => {
+						league.teams.pop();
+						league.save().then(() => {
 							next(GLOBAL_DB_ERROR);
 						});
 					});
