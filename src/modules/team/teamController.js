@@ -10,7 +10,7 @@ let router = express.Router();
 
 /**
  * headers: Authorization (token)
- * request body: name
+ * request body: name, location, color1, color2
  * response body: teamId, teamName
  */
 router.post('/create', verifyUserLoggedService, createTeamOperation);

@@ -18,6 +18,7 @@ const teamSchema = new mongoose.Schema({
 
 	location: {
 		type: String,
+		required: false,
 	},
 
 	leagues: [
@@ -29,10 +30,12 @@ const teamSchema = new mongoose.Schema({
 
 	color1: {
 		type: String,
+		required: false,
 	},
 	
 	color2: {
 		type: String,
+		required: false,
 	},
 
 	players: [

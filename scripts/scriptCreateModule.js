@@ -39,15 +39,21 @@ if (args.length !== 1) {
 	const responsesData3 = "module.exports = { responses, resNames };"
 	const responsesData = responsesData1 + responsesData2 + responsesData3;
 
+	const docsFilename = modulePath + "/" + moduleName + "Docs.md";
+	const docsData = "## " + moduleNameCapitalized + " Module Endpoints";
+
+
 	Promise.all([
 		createModuleFile(modelFilename, modelData),
 		createModuleFile(controllerFilename, controllerData),
 		createModuleFile(responsesFilename, responsesData),
+		createModuleFile(docsFilename, docsData),
 	])
 
 	.then(() => {
 		console.log("League Manager API >> Module " + moduleName + " created correctly.");
 	})
+	
 	.catch((err) => {
 		console.log("League Manager API >> Some error resulted in attempts of file creations\r\n", err);
 		fs.rmdirSync(modulePath);
