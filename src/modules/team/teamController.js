@@ -1,7 +1,9 @@
 const express = require('express');
 
 const { verifyUserLoggedService } = require('@auth/services/verifyUserLoggedService');
+const { verifyUserIsTeamAdminService } = require('@team/services/verifyUserIsTeamAdminService');
 const createTeamOperation = require('@team/operations/createTeamOperation');
+const addPlayerToTeamOperation = require('@team/operations/addPlayerToTeamOperation');
 
 
 
@@ -14,6 +16,8 @@ let router = express.Router();
  * response body: teamId, teamName
  */
 router.post('/create', verifyUserLoggedService, createTeamOperation);
+
+router.post('/:teamId/add-player', verifyUserLoggedService, verifyUserIsTeamAdminService, addPlayerToTeamOperation);
 
 
 

@@ -37,15 +37,11 @@ const teamSchema = new mongoose.Schema({
 		type: String,
 		required: false,
 	},
-
-	players: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: 'player'
-		}
-	]
 	
 });
+
+
+teamSchema.index({ admin: 1 });
 
 
 module.exports = mongoose.model('team', teamSchema);

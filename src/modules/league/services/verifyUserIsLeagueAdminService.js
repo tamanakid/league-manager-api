@@ -9,7 +9,6 @@ const { LEAGUE_NOT_FOUND, LEAGUE_UNAUTHORIZED } = require('@league/utils/leagueR
 exports.verifyUserIsLeagueAdminService = (req, res, next) => {
 
 	const leagueId = req.params.leagueId;
-	console.log('leagueId:', leagueId);
 
 	League.findById(leagueId).then((league) => {
 		if (league) {
