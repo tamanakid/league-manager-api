@@ -38,12 +38,12 @@ glob.sync(path.join(__dirname, '/modules/**/*+(Controller).js')).forEach((filena
 const controllers = glob.sync(path.join(__dirname, '/modules/**/*+(Controller).js')).map((filename) => {
 
 	let name = filename.split('Controller')[0].split('/').pop();
-	let router = require(path.resolve(filename));
-	return { name, router };
+	let controller = require(path.resolve(filename));
+	return { name, controller };
 });
 
-controllers.forEach(({ name, router }) => {
-	app.use(`/api/${name}`, router);
+controllers.forEach(({ name, controller }) => {
+	app.use(`/api/${name}`, controller);
 });
 
 
