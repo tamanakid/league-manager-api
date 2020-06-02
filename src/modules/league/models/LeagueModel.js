@@ -39,6 +39,7 @@ const leagueSchema = new Schema({
 
 
 leagueSchema.index({ admin: 1 });
+leagueSchema.index({ admin: 1, name: 1 }, { unique: true });
 
 
 module.exports = mongoose.model('league', leagueSchema);

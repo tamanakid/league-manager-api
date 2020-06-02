@@ -11,5 +11,5 @@
 ### `/team/:teamId/add-player`
 
 * Headers: Authorization
-* request body: `name`, `shirtNumber`,
-* response body: `playerId`, [`leagueId`]
+* request body: `name` (String), `shirtNumber` (Number), `position` (String)
+* response body: `playerId`, [`leaguesId`]

@@ -22,7 +22,7 @@ const addPlayerToTeamOperation = (req, res, next) => {
 		.then((playerLeagueStats) => {
 			res.status(201).json({
 				playerId: player.id,
-				leagueId: playerLeagueStats.league,
+				leaguesId: playerLeagueStats.map((stat) => stat.league),
 			});
 		})
 		

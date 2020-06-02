@@ -29,6 +29,7 @@ const playerSchema = new mongoose.Schema({
 
 
 playerSchema.index({ team: 1 });
+playerSchema.index({ team: 1, shirtNumber: 1 }, { unique: true });
 
 
 module.exports = mongoose.model('player', playerSchema);

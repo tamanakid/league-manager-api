@@ -39,7 +39,7 @@ const playerLeagueStatsSchema = new mongoose.Schema({
 });
 
 
-playerLeagueStatsSchema.index({ league: 1, player: 1 });
+playerLeagueStatsSchema.index({ league: 1, player: 1 }, { unique: true });
 
 
 module.exports = mongoose.model('player-league-stats', playerLeagueStatsSchema);
