@@ -6,6 +6,7 @@ const createLeagueOperation = require('@league/operations/createLeagueOperation'
 const addTeamToLeagueOperation = require('@league/operations/addTeamToLeagueOperation');
 const createLeagueTableOperation = require('@table/operations/createLeagueTableOperation');
 const addTeamToLeagueTableOperation = require('@table/operations/addTeamToLeagueTableOperation');
+const generateRoundRobinOperation = require('@match/operations/generateRoundRobinOperation');
 
 
 
@@ -13,19 +14,13 @@ const addTeamToLeagueTableOperation = require('@table/operations/addTeamToLeague
 let router = express.Router();
 
 
-/**
- * headers: Authorization (token)
- * request body: name, location, numberOfTeams
- * response body: leagueId, leagueName
- */
+
 router.post('/create', verifyUserLoggedService, createLeagueOperation, createLeagueTableOperation);
 
-/**
- * headers: Authorization (token)
- * request body: teamId
- * response body: teamId, leagueId
- */
 router.post('/:leagueId/add-team', verifyUserLoggedService, verifyUserIsLeagueAdminService, addTeamToLeagueOperation, addTeamToLeagueTableOperation);
+
+
+router.post('/:leagueId/generate-round-robin', verifyUserLoggedService, verifyUserIsLeagueAdminService, generateRoundRobinOperation);
 
 
 

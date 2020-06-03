@@ -21,6 +21,7 @@ const addTeamToLeagueOperation = (req, res, next) => {
 			table.teams.push({
 				_id: team,
 				teamName: team.name,
+				teamAbbr: team.abbr,
 			})
 
 			table.save().then(() => {
@@ -30,17 +31,15 @@ const addTeamToLeagueOperation = (req, res, next) => {
 				});
 			})
 
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
 				next(GLOBAL_DB_ERROR);
 			});
 		}
 	})
 
-	.catch((err) => {
-		console.log(err);
+	.catch(() => {
 		next(GLOBAL_DB_ERROR);
-	})
+	});
 
 };
 

@@ -10,6 +10,11 @@ const teamSchema = new mongoose.Schema({
 		required: true
 	},
 
+	abbr: {
+		type: String,
+		required: true
+	},
+
 	admin: {
     type: Schema.Types.ObjectId,
 		ref: 'user',

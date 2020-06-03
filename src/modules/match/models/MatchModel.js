@@ -31,15 +31,35 @@ const matchSchema = new mongoose.Schema({
 	},
 
 	homeTeam: {
-		type: Schema.Types.ObjectId,
-		ref: 'team',
-		required: true,
+		_id: {
+			type: Schema.Types.ObjectId,
+			ref: 'team',
+			required: true,
+		},
+		teamName: {
+			type: String,
+			required: true,
+		},
+		teamAbbr: {
+			type: String,
+			required: true,
+		},
 	},
 
 	awayTeam: {
-		type: Schema.Types.ObjectId,
-		ref: 'team',
-		required: true,
+		_id: {
+			type: Schema.Types.ObjectId,
+			ref: 'team',
+			required: true,
+		},
+		teamName: {
+			type: String,
+			required: true,
+		},
+		teamAbbr: {
+			type: String,
+			required: true,
+		},
 	},
 
 	homeApps: [
@@ -100,7 +120,7 @@ const matchSchema = new mongoose.Schema({
 
 matchSchema.index({ league: 1, homeTeam: 1 });
 matchSchema.index({ league: 1, awayTeam: 1 });
-matchSchema.index({ homeTeam: 1, awayTeam: 1 }, { unique: 1 });
+matchSchema.index({ league: 1, matchweek: 1 });
 
 
 module.exports = mongoose.model('match', matchSchema);

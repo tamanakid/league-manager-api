@@ -19,6 +19,7 @@ const tableSchema = new mongoose.Schema({
 				required: true,
 			},
 			teamName: { type: String, required: true },
+			teamAbbr: { type: String, required: true },
 			position: { type: Number, default: 0 },
 			gamesPlayed: { type: Number, default: 0 },
 			gamesWon: { type: Number, default: 0 },

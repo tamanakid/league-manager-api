@@ -9,6 +9,7 @@ const createTeamOperation = (req, res, next) => {
 
 	Team.create({
 		name: req.body.name,
+		abbr: req.body.abbr,
 		location: req.body.location,
 		color1: req.body.color1,
 		color2: req.body.color2,

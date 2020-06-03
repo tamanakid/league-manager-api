@@ -4,7 +4,7 @@
 ### POST `/team/create`
 
 * Headers: Authorization
-* request body: `name`, `location`, `color1`, `color2`
+* request body: `name`, `abbr`, `location`, `color1`, `color2`
 * response body: `teamId`, `teamName`
 
 
