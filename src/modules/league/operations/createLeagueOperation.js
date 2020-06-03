@@ -15,10 +15,8 @@ const createLeagueOperation = (req, res, next) => {
 	})
 
 	.then((league) => {
-		res.status(201).json({
-			leagueId: league.id,
-			leagueName: league.name,
-		})
+		res.locals.league = league;
+		next();
 	})
 	
 	.catch(() => {

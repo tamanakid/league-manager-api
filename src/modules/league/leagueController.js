@@ -4,6 +4,9 @@ const { verifyUserLoggedService } = require('@auth/services/verifyUserLoggedServ
 const { verifyUserIsLeagueAdminService } = require('@league/services/verifyUserIsLeagueAdminService');
 const createLeagueOperation = require('@league/operations/createLeagueOperation');
 const addTeamToLeagueOperation = require('@league/operations/addTeamToLeagueOperation');
+const createLeagueTableOperation = require('@table/operations/createLeagueTableOperation');
+const addTeamToLeagueTableOperation = require('@table/operations/addTeamToLeagueTableOperation');
+
 
 
 
@@ -15,14 +18,14 @@ let router = express.Router();
  * request body: name, location, numberOfTeams
  * response body: leagueId, leagueName
  */
-router.post('/create', verifyUserLoggedService, createLeagueOperation);
+router.post('/create', verifyUserLoggedService, createLeagueOperation, createLeagueTableOperation);
 
 /**
  * headers: Authorization (token)
  * request body: teamId
  * response body: teamId, leagueId
  */
-router.post('/:leagueId/add-team', verifyUserLoggedService, verifyUserIsLeagueAdminService, addTeamToLeagueOperation);
+router.post('/:leagueId/add-team', verifyUserLoggedService, verifyUserIsLeagueAdminService, addTeamToLeagueOperation, addTeamToLeagueTableOperation);
 
 
 

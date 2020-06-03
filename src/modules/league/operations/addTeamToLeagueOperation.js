@@ -27,11 +27,9 @@ const addTeamToLeagueOperation = (req, res, next) => {
 					team.leagues.push(league.id);
 					team.save().then((team) => {
 
-						res.status(200).json({
-							leagueId: league.id,
-							teamId: team.id,
-						});
-
+						res.locals.team = team;
+						next();
+						
 					})
 
 					.catch(() => {

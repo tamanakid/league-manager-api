@@ -13,7 +13,7 @@ const tableSchema = new mongoose.Schema({
 
 	teams: [
 		{
-			teamId: {
+			_id: {
 				type: Schema.Types.ObjectId,
 				ref: 'team',
 				required: true,
