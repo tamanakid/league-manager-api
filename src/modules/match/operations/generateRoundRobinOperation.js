@@ -16,6 +16,7 @@ const matchGeneration = (teams, league) => {
 		const nroMatchweeks = (nroTeams - 1) * 2;
 		
 		let matches = [];
+		let responses = 0;
 		let responseMatches = new Array(nroMatchweeks);
 	
 		for(var i = 0; i < (nroTeams/2); i++) {
@@ -29,7 +30,7 @@ const matchGeneration = (teams, league) => {
 			responseMatches[matchweek - 1] = new Array(nroTeams/2);
 			let homeIsTeam1 = (matchweek % 2 !== 0);
 	
-			for (matchIndex = 0; matchIndex < nroTeams/2; matchIndex++) {
+			for (let matchIndex = 0; matchIndex < nroTeams/2; matchIndex++) {
 				let homeTeam =  homeIsTeam1 ? teams[matches[matchIndex].team1] : teams[matches[matchIndex].team2];
 				let awayTeam =  homeIsTeam1 ? teams[matches[matchIndex].team2] : teams[matches[matchIndex].team1];
 				
@@ -45,8 +46,9 @@ const matchGeneration = (teams, league) => {
 						homeTeam: { id: match.homeTeam._id, name: match.homeTeam.teamName, abbr: match.homeTeam.teamAbbr },
 						awayTeam: { id: match.awayTeam._id, name: match.awayTeam.teamName, abbr: match.awayTeam.teamAbbr },
 					};
-	
-					if ((matchIndex === (nroTeams/2 - 1)) && (matchweek === nroMatchweeks)) {
+
+					responses++;
+					if (responses === (nroTeams/2)*nroMatchweeks) {
 						resolve(responseMatches);
 					}
 				})
