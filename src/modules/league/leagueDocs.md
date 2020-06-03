@@ -1,14 +1,14 @@
 ## League Module Endpoints
 
 
-### `/league/create`
+### POST `/league/create`
 
 * Headers: Authorization
 * request body: `name`, `location`, `numberOfTeams`
 * response body: `leagueId`, `leagueName`
 
 
-### `/league/:leagueId/add-team`
+### POST `/league/:leagueId/add-team`
 
 * Headers: Authorization
 * request body: `teamId`

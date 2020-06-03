@@ -11,12 +11,11 @@ const addPlayerToTeamOperation = require('@team/operations/addPlayerToTeamOperat
 let router = express.Router();
 
 
-/**
- * headers: Authorization (token)
- * request body: name, location, color1, color2
- * response body: teamId, teamName
- */
+
 router.post('/create', verifyUserLoggedService, createTeamOperation);
+
+
+/* Team Players endpoints */
 
 router.post('/:teamId/add-player', verifyUserLoggedService, verifyUserIsTeamAdminService, verifyShirtNumberNotTakenService, addPlayerToTeamOperation);
 

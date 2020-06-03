@@ -1,14 +1,14 @@
 ## Auth Module Endpoints
 
 
-### `/auth/signup`
+### POST `/auth/signup`
 
 * Headers: none
 * request body: `username`, `password`, `email`, `name`
 * response body: `userId`, `username`
 
 
-### `/auth/login`
+### POST `/auth/login`
 
 * Headers: none
 * request body: `usernameOrEmail`, `password`

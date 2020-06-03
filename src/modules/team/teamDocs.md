@@ -1,14 +1,14 @@
 ## Team Module Endpoints
 
 
-### `/team/create`
+### POST `/team/create`
 
 * Headers: Authorization
 * request body: `name`, `location`, `color1`, `color2`
 * response body: `teamId`, `teamName`
 
 
-### `/team/:teamId/add-player`
+### POST `/team/:teamId/add-player`
 
 * Headers: Authorization
 * request body: `name` (String), `shirtNumber` (Number), `position` (String)
