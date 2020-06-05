@@ -10,11 +10,8 @@ const matchGeneration = (teams, league) => {
 
 	return new Promise((resolve, reject) => {
 
-		const hub = teams[0];
-		const nroTeams = teams.length
-		const nroMatches = nroTeams * (nroTeams - 1);
+		const nroTeams = teams.length;
 		const nroMatchweeks = (nroTeams - 1) * 2;
-		
 		let matches = [];
 		let responses = 0;
 		let responseMatches = new Array(nroMatchweeks);
@@ -53,8 +50,7 @@ const matchGeneration = (teams, league) => {
 					}
 				})
 
-				.catch((err) => {
-					console.log("Error at match insertion:", err);
+				.catch(() => {
 					reject();
 				});
 			}
@@ -95,8 +91,6 @@ const generateRoundRobinOperation = (req, res, next) => {
 				next(GLOBAL_DB_ERROR);
 			});
 		}		
-	
-	
 	})
 
 	.catch(() => {

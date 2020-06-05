@@ -21,13 +21,13 @@ const matchSchema = new mongoose.Schema({
 	},
 
 	date: {
-		type: Date,
-		required: false,
+		type: String,
+		default: null,
 	},
 
 	venue: {
 		type: String,
-		required: false,
+		default: null,
 	},
 
 	homeTeam: {
