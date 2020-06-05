@@ -16,7 +16,7 @@ const addPlayerToTeamOperation = (req, res, next) => {
 	Player.create({	name, shirtNumber, position, team }).then((player) => {
 
 		// Create a relation between the player and each of the team's leagues
-		let playerLeagues = team.leagues.map((league) => ({ player: player.id, league }));
+		let playerLeagues = team.leagues.map((league) => ({ player: player.id, league, team }));
 		PlayerLeagueStats.insertMany(playerLeagues)
 		
 		.then((playerLeagueStats) => {

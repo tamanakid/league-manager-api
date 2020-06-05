@@ -16,6 +16,12 @@ const playerLeagueStatsSchema = new mongoose.Schema({
 		required: true,
 	},
 
+	team: {
+		type: Schema.Types.ObjectId,
+		ref: 'team',
+		required: true,
+	},
+
 	appearances: {
 		type: Number,
 		default: 0,

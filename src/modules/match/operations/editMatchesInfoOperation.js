@@ -49,8 +49,7 @@ const editMatchesInfoOperation = (req, res, next) => {
 	})
 
 
-	.catch((err) => {
-		console.log(err);
+	.catch(() => {
 		next(GLOBAL_DB_ERROR);
 	});	
 }

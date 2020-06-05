@@ -8,7 +8,7 @@ const createLeagueTableOperation = require('@table/operations/createLeagueTableO
 const addTeamToLeagueTableOperation = require('@table/operations/addTeamToLeagueTableOperation');
 const generateRoundRobinOperation = require('@match/operations/generateRoundRobinOperation');
 const editMatchesInfoOperation = require('@match/operations/editMatchesInfoOperation');
-
+const getMatchesQueryOperation = require('@match/operations/getMatchesQueryOperation');
 
 
 let router = express.Router();
@@ -23,6 +23,8 @@ router.post('/:leagueId/add-team', verifyUserLoggedService, verifyUserIsLeagueAd
 router.post('/:leagueId/generate-round-robin', verifyUserLoggedService, verifyUserIsLeagueAdminService, generateRoundRobinOperation);
 
 router.put('/:leagueId/edit-matches-info', verifyUserLoggedService, verifyUserIsLeagueAdminService, editMatchesInfoOperation);
+
+router.get('/:leagueId/get-matches', getMatchesQueryOperation);
 
 
 module.exports = router;

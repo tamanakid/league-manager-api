@@ -88,6 +88,7 @@ const matchSchema = new mongoose.Schema({
 
 	homeGoalscorers: [
 		{
+			_id: false,
 			player: {
 				type: Schema.Types.ObjectId,
 				ref: 'player',
@@ -102,6 +103,7 @@ const matchSchema = new mongoose.Schema({
 
 	awayGoalscorers: [
 		{
+			_id: false,
 			player: {
 				type: Schema.Types.ObjectId,
 				ref: 'player',
@@ -121,6 +123,7 @@ const matchSchema = new mongoose.Schema({
 matchSchema.index({ league: 1, homeTeam: 1 });
 matchSchema.index({ league: 1, awayTeam: 1 });
 matchSchema.index({ league: 1, matchweek: 1 });
+matchSchema.index({ date: 1, venue: 1 }, { unique: true });
 
 
 module.exports = mongoose.model('match', matchSchema);
