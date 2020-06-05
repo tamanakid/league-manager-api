@@ -5,6 +5,7 @@ const { verifyUserIsTeamAdminService } = require('@team/services/verifyUserIsTea
 const { verifyShirtNumberNotTakenService } = require('@team/services/verifyShirtNumberNotTakenService');
 const createTeamOperation = require('@team/operations/createTeamOperation');
 const addPlayerToTeamOperation = require('@team/operations/addPlayerToTeamOperation');
+const getTeamInfoQueryOperation = require('@team/operations/getTeamInfoQueryOperation');
 
 
 
@@ -13,6 +14,8 @@ let router = express.Router();
 
 
 router.post('/create', verifyUserLoggedService, createTeamOperation);
+
+router.get('/:teamId/get-info', getTeamInfoQueryOperation);
 
 
 /* Team Players endpoints */
