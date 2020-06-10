@@ -13,3 +13,16 @@
 * Headers: Authorization
 * request body: `name` (String), `shirtNumber` (Number), `position` (String)
 * response body: `playerId`, [`leaguesId`]
+
+
+### GET `/team/:teamId/get-info`
+
+* Headers: None
+* response body: `team`, `matches` (Upcoming matches)
+
+
+
+### GET `/team/:teamId/get-players`
+
+* Headers: None
+* response body: `team`, [`playersWithStats`]
