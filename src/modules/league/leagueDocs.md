@@ -27,3 +27,10 @@
 * Headers: none
 * query params: `next` or `last`
 * response body: `leagueId`, [`match`]
+
+
+### GET `/league/:leagueId/get-table`
+
+* Headers: none
+* query params: none
+* response body: ? 
