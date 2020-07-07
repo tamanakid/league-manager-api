@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const User = require('@auth/models/UserModel');
-const { createAccessToken } = require('@/modules/auth/utils/createTokens');
-const { GLOBAL_DB_ERROR } = require('@/utils/globalResponses').resNames;
+const { createAccessToken, createRefreshToken, addRefreshTokenCookie } = require('@/modules/auth/utils/createTokens');
 const { AUTH_INVALID_REFRESH_TOKEN } = require('@/modules/auth/utils/authResponses.js').resNames;
 
 
@@ -18,7 +17,10 @@ const refreshTokenOperation = async (req, res, next) => {
 		let user = await User.findOne({ _id: decodedRefreshToken.userId });
 		if (!user) throw new Error();
 
-		accessToken = createAccessToken(user);
+		const accessToken = createAccessToken(user);
+		const newRefreshToken = createRefreshToken(user)
+		addRefreshTokenCookie(res, newRefreshToken);
+
 		res.status(200).json({ accessToken })
 
 	} catch (error) {
