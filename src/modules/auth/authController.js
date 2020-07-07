@@ -4,6 +4,7 @@ const checkUserExistsService = require('@auth/services/checkUserExistsService');
 const signupOperation = require('@auth/operations/signupOperation');
 const loginOperation = require('@auth/operations/loginOperation');
 const refreshTokenOperation = require('@auth/operations/refreshTokenOperation');
+const revokeRefreshTokenOperation = require('@auth/operations/revokeRefreshTokenOperation');
 
 
 let controller = createController();
@@ -15,6 +16,8 @@ controller.endpoint('post', '/signup', [checkUserExistsService.checkUsernameAndE
 controller.endpoint('post', '/login', [checkUserExistsService.checkUsernameOrEmail, loginOperation]);
 
 controller.endpoint('post', '/refresh-token', [refreshTokenOperation]);
+
+controller.endpoint('post', '/revoke-refresh-token/:userId', [revokeRefreshTokenOperation]);
 
 
 

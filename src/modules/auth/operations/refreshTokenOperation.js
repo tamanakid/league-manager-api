@@ -5,7 +5,6 @@ const { createAccessToken, createRefreshToken, addRefreshTokenCookie } = require
 const { AUTH_INVALID_REFRESH_TOKEN } = require('@/modules/auth/utils/authResponses.js').resNames;
 
 
-// const checkUsernameAvailable;
 
 const refreshTokenOperation = async (req, res, next) => {
 
@@ -15,7 +14,9 @@ const refreshTokenOperation = async (req, res, next) => {
 
 		let decodedRefreshToken = jwt.verify(refreshToken, process.env.JWT_REFRESH_KEY);
 		let user = await User.findOne({ _id: decodedRefreshToken.userId });
+
 		if (!user) throw new Error();
+		if (decodedRefreshToken.tokenVersion !== user.tokenVersion) throw new Error();
 
 		const accessToken = createAccessToken(user);
 		const newRefreshToken = createRefreshToken(user)
@@ -24,7 +25,6 @@ const refreshTokenOperation = async (req, res, next) => {
 		res.status(200).json({ accessToken })
 
 	} catch (error) {
-		console.log("error", error);
 		next(AUTH_INVALID_REFRESH_TOKEN);
 	}
 
