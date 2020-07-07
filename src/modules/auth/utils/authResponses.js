@@ -4,6 +4,7 @@ const resNames = {
 	AUTH_INVALID_TOKEN: "AUTH_INVALID_TOKEN",
 	AUTH_REGISTER_ERROR: "AUTH_REGISTER_ERROR",
 	AUTH_INCORRECT_PASSWORD: "AUTH_INCORRECT_PASSWORD",
+	AUTH_INVALID_REFRESH_TOKEN: "AUTH_INVALID_REFRESH_TOKEN",
 };
 
 
@@ -38,7 +39,13 @@ const responses = {
 		res.status(401).json({
 			message: 'Incorrect password'
 		});
-	}
+	},
+
+	[resNames.AUTH_INVALID_REFRESH_TOKEN]:  (res) => {
+		res.status(401).json({
+			message: 'Invalid refresh token'
+		});
+	},
 
 };
 

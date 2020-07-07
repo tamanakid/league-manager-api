@@ -10,12 +10,13 @@ exports.verifyUserLoggedService = (req, res, next) => {
 	const authHeader = req.get('Authorization');
 
 	if (!authHeader) {
-		responses.userNotLogged(res);
+		next(AUTH_INVALID_TOKEN);
 	}
 
 	let decodedKey;
 	try {
-		decodedKey = jwt.verify(authHeader, process.env.JWT_KEY);
+		const accessToken = authHeader.split("Bearer ")[1];
+		decodedKey = jwt.verify(accessToken, process.env.JWT_ACCESS_KEY);
 	} catch (error) {
 		next(AUTH_INVALID_TOKEN);
 	}

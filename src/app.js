@@ -4,13 +4,15 @@ const glob = require('glob');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const moduleAlias = require('module-alias');
 
 const errorHandler = require('@/utils/errorHandler');
 
-
+// cookie-parser
 
 app = express();
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
