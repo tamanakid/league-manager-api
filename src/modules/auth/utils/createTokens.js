@@ -13,7 +13,9 @@ exports.createRefreshToken = (user) => {
 
 exports.addRefreshTokenCookie = (res, refreshToken) => {
 	res.cookie("refresh", refreshToken, {
+		domain: '127.0.0.1',
 		httpOnly: true,
-		path: "/api/auth/refresh-token"
+		path: "/api/auth/refresh-token",
+		maxAge: 86400000,
 	});
 };

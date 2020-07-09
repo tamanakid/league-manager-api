@@ -18,7 +18,7 @@ const responses = {
 	},
 
 	[resNames.AUTH_USER_DOESNT_EXIST]: (res) => {
-		res.status(409).json({
+		res.status(404).json({
 			message: 'This username or email does not exist.',
 		});
 	},
@@ -36,6 +36,7 @@ const responses = {
 	},
 
 	[resNames.AUTH_INCORRECT_PASSWORD]: (res) => {
+		console.log('incorrect password')
 		res.status(401).json({
 			message: 'Incorrect password'
 		});

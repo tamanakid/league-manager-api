@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 const { createAccessToken, createRefreshToken, addRefreshTokenCookie } = require('@/modules/auth/utils/createTokens');
-const { AUTH_INCORRECT_PASSWORD } = require('@/utils/globalResponses').resNames;
+const { AUTH_INCORRECT_PASSWORD } = require('@/modules/auth/utils/authResponses').resNames;
 
 
 const loginOperation = (req, res, next) => {
