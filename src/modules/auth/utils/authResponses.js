@@ -44,6 +44,7 @@ const responses = {
 
 	[resNames.AUTH_INVALID_REFRESH_TOKEN]:  (res) => {
 		res.status(401).json({
+			errorCode: resNames.AUTH_INVALID_REFRESH_TOKEN,
 			message: 'Invalid refresh token'
 		});
 	},
