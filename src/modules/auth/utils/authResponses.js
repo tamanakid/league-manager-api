@@ -25,6 +25,7 @@ const responses = {
 
 	[resNames.AUTH_INVALID_TOKEN]: (res) => {
 		res.status(401).json({
+			errorCode: resNames.AUTH_INVALID_TOKEN,
 			message: 'The user is not logged or the authorization token is incorrect',
 		})
 	},

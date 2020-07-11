@@ -22,7 +22,7 @@ const refreshTokenOperation = async (req, res, next) => {
 		const newRefreshToken = createRefreshToken(user)
 		addRefreshTokenCookie(res, newRefreshToken);
 
-		res.status(200).json({ accessToken, userId });
+		res.status(200).json({ accessToken: ("Bearer " + accessToken), userId });
 
 	} catch (error) {
 		console.log("error", error);

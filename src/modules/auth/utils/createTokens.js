@@ -16,6 +16,7 @@ exports.addRefreshTokenCookie = (res, refreshToken) => {
 		domain: '127.0.0.1',
 		httpOnly: true,
 		path: "/api/auth/refresh-token",
-		maxAge: 86400000,
+		// maxAge: 86400000,
+		maxAge: 180000,
 	});
 };
