@@ -16,7 +16,7 @@ let router = express.Router();
 
 router.post('/create', verifyUserLoggedService, createTeamOperation);
 
-router.get('/:teamId/get-info', verifyUserLoggedService, getTeamInfoQueryOperation);
+router.get('/:teamId/get-info', getTeamInfoQueryOperation);
 
 router.get('/:teamId/get-players', getTeamPlayersQueryOperation);
 
